@@ -2,6 +2,8 @@ Classification and Localization of Disease with Bounding Boxes from Chest X-Ray 
 
 Hugo Kitano
 
+This project and its data are based off a Kaggle competition: https://www.kaggle.com/nih-chest-xrays/data
+
 This README explains the usage of the python scripts:
 
 1. preprocessing.py sets up data for training. It requires the paths to text files that have the image names for each of the train, validation, and test set, as well as the path to other data and images. Its outputs are numpy and pickle files that contain the image and class data for the train, validation, and test images. These files will be useful throughout the rest of the pipeline.
