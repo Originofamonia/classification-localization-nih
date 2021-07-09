@@ -35,7 +35,7 @@ def main():
         valid_list = [i.strip() for i in f.readlines()]
     with open(test_txt_path, "r") as f:
         test_list = [i.strip() for i in f.readlines()]
-    label_eight = list(np.unique(bbox_list["Finding Label"])) + ["No Finding"]  # length nine
+    # label_eight = list(np.unique(bbox_list["Finding Label"])) + ["No Finding"]  # length nine
 
     # transform training images
     print("training example:", len(train_list))
