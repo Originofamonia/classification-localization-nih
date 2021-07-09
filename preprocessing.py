@@ -45,9 +45,9 @@ def main():
     for i in range(len(train_list)):
         image_path = os.path.join(image_folder_path, train_list[i])
         img = imageio.imread(image_path)
+        if img.shape != (1024, 1024):
+            img = img[:, :, 0]
         img_resized = skimage.transform.resize(img, (256, 256))  # or use img[::4] here
-        if len(img_resized.shape) > 2:
-            img_resized = img_resized[:, :, 0]
         train_x.append((np.expand_dims(img_resized, axis=2)))
         if i % 1000 == 0:
             print(i)
