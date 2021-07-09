@@ -38,36 +38,36 @@ def main():
     # label_eight = list(np.unique(bbox_list["Finding Label"])) + ["No Finding"]  # length nine
 
     # transform training images
-    print("training example:", len(train_list))
+    print("Training example:", len(train_list))
     print("take care of your RAM here")
-    train_X = []
+    train_x = []
 
     for i in range(len(train_list)):
         image_path = os.path.join(image_folder_path, train_list[i])
         img = imageio.imread(image_path)
         img_resized = skimage.transform.resize(img, (256, 256))  # or use img[::4] here
-        train_X.append((np.expand_dims(img_resized, axis=2)))
+        train_x.append((np.expand_dims(img_resized, axis=2)))
         if i % 1000 == 0:
             print(i)
 
-    train_X = np.array(train_X)
-    np.save(os.path.join(data_path, "train_X_small.npy"), train_X)
+    train_x = np.asarray(train_x)
+    np.save(os.path.join(data_path, "train_X_small.npy"), train_x)
 
     # transform validation images
     print("validation example:", len(valid_list))
-    valid_X = []
+    valid_x = []
     for i in range(len(valid_list)):
         image_path = os.path.join(image_folder_path, valid_list[i])
         img = imageio.imread(image_path)
         if img.shape != (1024, 1024):
             img = img[:, :, 0]
         img_resized = skimage.transform.resize(img, (256, 256))
-        valid_X.append((np.expand_dims(img_resized, axis=2)))
+        valid_x.append((np.expand_dims(img_resized, axis=2)))
         if i % 1000 == 0:
             print(i)
 
-    valid_X = np.array(valid_X)
-    np.save(os.path.join(data_path, "valid_X_small.npy"), valid_X)
+    valid_x = np.asarray(valid_x)
+    np.save(os.path.join(data_path, "valid_X_small.npy"), valid_x)
 
     # test images
     test_X = []
